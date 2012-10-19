@@ -5,16 +5,35 @@
 
 <body>
 	<div class="container">
-  		{{> sensor_list}}
+		<div class="row">
+			<div class="span12 head"><h1>METEORSTICK<h1></div>
+		</div>
+		<div class="row">
+			<div class="span2">{{> sensor_list}}</div>
+			<div class="span10">{{> sensor_info}}</div>
 
+		</div>
+  		
 	</div>
+
+	
 </body>
 
 <template name="sensor_list">
+	<ul>
 	{{#each sensors}}
-		{{id}}
+		<li><a id="{{id}}" href="#">{{name}}</a></li>
 	{{/each}}
-
+	</ul>
 </template>
+
+<template name="sensor_info">
+	{{#sensor_info id}}
+		{{#	each currentData}}
+			{{name}} -> {{value}}<br />
+		{{/each}}
+	{{/sensor_info}}
+</template>
+
 
 

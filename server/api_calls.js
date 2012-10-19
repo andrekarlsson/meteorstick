@@ -43,6 +43,6 @@ function removeDeletedSensors(oldSensorArr, newSensorArr){
 
 Meteor.startup(function () {
 
-  Meteor.setInterval(function(){ oauth.getJSON('http://api.telldus.com/json/sensors/list', success, failure); }, 10000);
+  //Meteor.setInterval(function(){ oauth.getJSON('http://api.telldus.com/json/sensors/list', success, failure); }, 10000);
 
 });
