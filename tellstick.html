@@ -1,0 +1,20 @@
+<head>
+  <title>tellstick</title>
+
+</head>
+
+<body>
+	<div class="container">
+  		{{> sensor_list}}
+
+	</div>
+</body>
+
+<template name="sensor_list">
+	{{#each sensors}}
+		{{id}}
+	{{/each}}
+
+</template>
+
+
