@@ -9,8 +9,8 @@
 			<div class="span12 head"><h1>METEORSTICK<h1></div>
 		</div>
 		<div class="row">
-			<div class="span2">{{> sensor_list}}</div>
-			<div class="span10">{{> sensor_info}}</div>
+			<div class="span2">{{> sensorList}}</div>
+			<div class="span10">{{> sensorInfo}}</div>
 
 		</div>
   		
@@ -19,7 +19,7 @@
 	
 </body>
 
-<template name="sensor_list">
+<template name="sensorList">
 	<ul>
 	{{#each sensors}}
 		<li><a id="{{id}}" href="#">{{name}}</a></li>
@@ -27,13 +27,41 @@
 	</ul>
 </template>
 
-<template name="sensor_info">
-	{{#sensor_info id}}
-		{{#	each currentData}}
-			{{name}} -> {{value}}<br />
-		{{/each}}
-	{{/sensor_info}}
+<template name="sensorInfo">
+	{{#sensorInfo id}}
+		<h1>{{name}}</h1>
+		{{> currentData}}
+
+		{{sensorPlot data.day.temp}}
+
+	{{/sensorInfo}}
 </template>
+
+<template name="currentData">
+	{{#each currentData}}
+		{{name}} -> {{value}}<br />
+	{{/each}}
+	<br />
+	{{> sensorStats}}
+
+</template>
+
+<template name="sensorStats">
+
+	{{#key_value stats}}
+		<h2>{{key}}</h2> {{! day, week, month, year}}
+		{{#key_value value}} {{! max, min, mean}}
+			{{#each value}} {{! temp, humidity}}
+				{{../key}} {{name}}: -> {{value}}<br /> 
+			{{/each}}
+		<br />
+		{{/ key_value}}
+
+
+	{{/key_value}}
+
+</template>
+
 
 
 
