@@ -43,7 +43,8 @@ Meteor.publish("sensor_stats", function (id) {
           currentData: reading.data,
           stats: getStats(id),
           data: {
-            day: getPlotData(id, now-DAY, now)
+            day: getPlotData(id, now-DAY, now),
+            week: getPlotData(id, now-WEEK, now)
           } 
         }
 
@@ -114,7 +115,7 @@ function getStatsFromPeriod(id, from, to){
       var max = _.max(stats[key]);
       var min = _.min(stats[key]);
 
-      ret.mean.push({name: key, value: mean});
+      ret.mean.push({name: key, value: mean.toFixed(1)});
       ret.max.push({name: key, value: max});
       ret.min.push({name: key, value: min});
     }

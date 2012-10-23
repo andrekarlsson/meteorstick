@@ -5,13 +5,15 @@
 
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="span12 head"><h1>METEORSTICK<h1></div>
+		<div class="navbar">
+		  <div class="navbar-inner">
+		    <a class="brand" href="#">Meteorstick</a>
+		    {{> sensorList}}
+		  </div>
 		</div>
-		<div class="row">
-			<div class="span2">{{> sensorList}}</div>
-			<div class="span10">{{> sensorInfo}}</div>
 
+			{{> sensorInfo}}
+		
 		</div>
   		
 	</div>
@@ -20,7 +22,7 @@
 </body>
 
 <template name="sensorList">
-	<ul>
+	<ul class="nav">
 	{{#each sensors}}
 		<li><a id="{{id}}" href="#">{{name}}</a></li>
 	{{/each}}
@@ -28,36 +30,56 @@
 </template>
 
 <template name="sensorInfo">
+
 	{{#sensorInfo id}}
-		<h1>{{name}}</h1>
-		{{> currentData}}
+		<div class="row">
+			<div class="span4">
+				<h1>{{name}}</h1>
+				{{> currentData}}
+			</div>
+
+		</div>
+
+		<div class="row">
+			{{> sensorStats}}
+		</div>
+
 
 		{{sensorPlot data.day.temp}}
-
+		{{sensorPlot data.week.temp}}
 	{{/sensorInfo}}
 </template>
 
 <template name="currentData">
-	{{#each currentData}}
-		{{name}} -> {{value}}<br />
-	{{/each}}
-	<br />
-	{{> sensorStats}}
+	{{#if currentData}}
+		<h2>current</h2> 
+		{{#each currentData}}
+			{{name}} -> {{value}}<br />
+		{{/each}}
+		<br />
+	{{else}}
+		<h2 style="text-align: center">^- choose!</h2>
+	{{/if}}
 
 </template>
 
 <template name="sensorStats">
 
+
 	{{#key_value stats}}
-		<h2>{{key}}</h2> {{! day, week, month, year}}
-		{{#key_value value}} {{! max, min, mean}}
-			{{#each value}} {{! temp, humidity}}
-				{{../key}} {{name}}: -> {{value}}<br /> 
-			{{/each}}
-		<br />
-		{{/ key_value}}
+		<div class="span3">
+			<h2>{{key}}</h2>
+			{{#key_value value}}
+				<h3>{{key}}</h3> 
+				{{#each value}}
+					
+					{{name}}: {{value}}<br />
+				{{/each}}
+			<br />
+			{{/ key_value}}
 
 
+		</div>
 	{{/key_value}}
 
 </template>

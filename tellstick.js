@@ -56,14 +56,12 @@ if (Meteor.is_client) {
       },
       sensorPlot: function(data){
         if(data === ''){
-          return false;
+          return ;
         }
 
         var margin = {top: 20, right: 20, bottom: 30, left: 50},
-        width = 480 - margin.left - margin.right,
-        height = 200 - margin.top - margin.bottom;
-
-        var parseDate = d3.time.format("%d-%b-%y").parse;
+        width = 920 - margin.left - margin.right,
+        height = 480 - margin.top - margin.bottom;
 
         var x = d3.time.scale()
             .range([0, width]);
@@ -85,20 +83,18 @@ if (Meteor.is_client) {
 
             d3.select("svg").remove();
 
-        if(d3.select("svg") !== null){
-          var svg = d3.select("body").append("svg")
+          console.log();
+          var svg = d3.select(".container").append("svg")
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
                     .append("g")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-        }else{
-          var svg = d3.select("svg");
-        }
+        
             
         
         data.forEach(function(d) {
           d.timestamp = new Date(d.timestamp*1000);
-          d.value = +d.value;
+          d.value = d.value;
         });
 
 
@@ -125,6 +121,9 @@ if (Meteor.is_client) {
           .attr("class", "line")
           .attr("d", line);
         }
+
+
+
 
   });
 
