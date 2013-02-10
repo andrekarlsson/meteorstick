@@ -1,0 +1,52 @@
+<head>
+  <title>meteorstick</title>
+</head>
+
+<body>
+  {{> start}}
+</body>
+
+<template name="start">
+  {{getStartTemplate}}
+</template>
+
+<template name="main">
+  <p>in main</p>
+</template>
+
+<template name="settings">
+  <div class="container-fluid settings">
+    
+    <div class="row-fluid">
+      <div class="span7 offset3">
+        <h1>meteorstick</h1>
+      </div>
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span7 offset3">
+        <div class="settings_box">{{> settingsForm}}</div>
+      </div>
+    </div>
+  
+  </div>
+</template>
+
+<template name="settingsForm">
+    <form class="settings_form">
+        <label for="consumerKey">Consumer key:</label>
+        <input type="text" name="consumerKey"/>
+
+        <label for="consumerSecret">Consumer secret:</label>
+        <input type="text" name="consumerSecret"/>
+
+        <label for="token">Token:</label>
+        <input type="text" name="token"/>
+
+        <label for="tokenSecret">Token secret:</label>
+        <input type="text" name="tokenSecret"/>
+        <br>
+        <button type="button" class="btn btn-primary save">Save keys</button>
+    </form>
+
+</template>

@@ -1,0 +1,40 @@
+/* CSS declarations go here */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+html {
+	background: #333 url(/img/dark_fabric.png);
+}
+
+body {
+	background: inherit;
+}
+
+h1 {	
+	font-family: 'Oswald', sans-serif;
+	font-size:5em; 
+	line-height: 1.2em; 
+	padding: 0; 
+	text-transform: uppercase;
+
+	color: #FFF; 
+	text-shadow: 2px 3px #000, 4px 5px #CCCCCC;
+}
+
+.settings_form input[type="text"] {
+	height: 30px;
+	width: 100%;
+}
+
+.settings_form button{
+	width: 100%;
+	margin-top: 5%;
+}
+
+.settings_box {
+	width: 100%;
+	margin: 3% auto;
+	padding: 2%;
+	background: #fff;
+	border-radius: 2px;
+	box-shadow: -10px 10px 0px 0px rgba(0, 0, 0, 0.1), -8px 8px 10px 0px rgba(0, 0, 0, 0.2);
+}
